@@ -1,9 +1,7 @@
 version: "3.9"
 services:
  useritem-api-service:
-  build:
-    context: .
-    dockerfile: Dockerfile
+  image: navyemperor/API-project
   ports:
     - "8000:8000"
   volumes:
