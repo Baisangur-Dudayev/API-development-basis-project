@@ -10,8 +10,7 @@ import schemas
 from database import SessionLocal, engine
 import os
 
-
-
+from fastapi.middleware.cors import CORSMiddleware #voor site & security
 
 
 if not os.path.exists('.\sqlitedb'):
@@ -22,6 +21,22 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+# CORS (Cross-Origin Resource Sharing) Configuration
+origins = [
+    "http://localhost",
+    "http://localhost:8095",  # Add your frontend's local development server
+    "https://localhost.tiangolo.com",
+    "http://127.0.0.1:5500"
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # You can specify specific HTTP methods if needed
+    allow_headers=["*"],  # You can specify specific HTTP headers if needed
+)
 
 # Dependency
 def get_db():
@@ -30,6 +45,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
 #OAuth
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
@@ -62,7 +78,7 @@ def create_author(author: schemas.AuthorCreate, db: Session = Depends(get_db)):
 
 
 @app.get("/authors/", response_model=list[schemas.Author])
-def read_authors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+def read_authors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     authors = crud.get_authors(db, skip=skip, limit=limit)
     return authors
 
