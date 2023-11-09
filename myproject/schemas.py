@@ -1,35 +1,54 @@
 from pydantic import BaseModel
 
-
-class ItemBase(BaseModel):
+#Book classen
+class BookBase(BaseModel):
     title: str
     description: str | None = None
+    publication_date: str
+    genre: str
 
-
-class ItemCreate(ItemBase):
+class BookCreate(BookBase):
     pass
 
-
-class Item(ItemBase):
+class Book(BookBase):
     id: int
-    owner_id: int
+    author_id: int
 
     class Config:
         orm_mode = True
 
+#PenName classen
+class PenNameBase(BaseModel):
+    pen_name: str
 
-class UserBase(BaseModel):
+class PenNameCreate(PenNameBase):
+    pass
+
+class PenName(PenNameBase):
+    id: int
+    author_id: int
+
+    class Config:
+        orm_mode = True
+
+#Author classen
+class AuthorBase(BaseModel):
     email: str
+    first_name: str | None = None
+    last_name: str  | None = None
+    place_of_birth: str | None = None
+    biography: str | None = None
 
-
-class UserCreate(UserBase):
+class AuthorCreate(AuthorBase):
     password: str
 
-
-class User(UserBase):
+class Author(AuthorBase):
     id: int
     is_active: bool
-    items: list[Item] = []
+    #om classen Book & PenName hier te gebruiken moeten ze boven boven deze classen gedefinieerd staan
+    books: list[Book] = []
+    pen_names: list[PenName] = []
 
     class Config:
         orm_mode = True
+
