@@ -16,10 +16,10 @@ class Author(Base):
     biography = Column(String)
     is_active = Column(Boolean, default=True)
 
-    # Define the relationship with pen names
+    # relatie met classe PenName
     pen_names = relationship("PenName", back_populates="author2")
 
-    # Define the relationship with books
+    # relatie met classe Book
     books = relationship("Book", back_populates="author")
 
 
@@ -34,7 +34,7 @@ class Book(Base):
     #FK
     author_id = Column(Integer, ForeignKey("authors.id"))
 
-    # Define the relationship with the author
+    # relatie met classe Author
     author = relationship("Author", back_populates="books")
 
 
@@ -46,5 +46,5 @@ class PenName(Base):
     #FK
     author_id = Column(Integer, ForeignKey("authors.id"))
 
-    # Define the relationship with the author
+    # relatie met classe Author
     author2 = relationship("Author", back_populates="pen_names")
