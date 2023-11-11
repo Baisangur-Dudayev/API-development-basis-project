@@ -2,6 +2,8 @@ from sqlalchemy.orm import Session
 
 import models
 import schemas
+import auth
+
 
 #AUTHORS
 def get_author(db: Session, author_id: int):
@@ -17,8 +19,8 @@ def get_authors(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_author(db: Session, author: schemas.AuthorCreate):
-    fake_hashed_password = author.password + "notreallyhashed"
-    db_author = models.Author(email=author.email, hashed_password=fake_hashed_password, \
+    hashed_password = auth.get_password_hash(author.password)
+    db_author = models.Author(email=author.email, hashed_password=hashed_password, \
                               first_name=author.first_name, last_name=author.last_name, \
                               place_of_birth=author.place_of_birth, biography=author.biography)
     db.add(db_author)
@@ -68,3 +70,4 @@ def delete_pen_name(db: Session, pen_name_id: int):
         db.commit()
         return pen_name
     return None
+
