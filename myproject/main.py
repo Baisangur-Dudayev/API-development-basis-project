@@ -23,6 +23,7 @@ app = FastAPI()
 
 # CORS (Cross-Origin Resource Sharing) Configuration
 origins = [
+    "*"
     "http://localhost",
     "http://localhost:8095",  # Add your frontend's local development server
     "https://localhost.tiangolo.com",
