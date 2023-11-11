@@ -10,7 +10,7 @@
             this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/')).json();
         }
     }" x-init="getData">
-        Data returned: <strong x-text="responsedata[0].title">Placeholder</strong>
+        Data returned: <strong x-text="responsedata[0]">Placeholder</strong>
     </div>
 </body>
 </html>
