@@ -3,18 +3,15 @@
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
 <body>
-    <p>dir myproject</p>
-     <p>20:12 a</p>
     <div x-data="{
         responsedata: null,
         async getData() {
             this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/')).json();
         }
-    }" x-init="getData">
-        Data returned: <strong x-text="responsedata[0]">Placeholder</strong>
+    }">
+        <button x-on:click="getData">Send get request</button>
+        Data returned: <strong x-text="responsedata">Placeholder</strong>
     </div>
-    <p>20:12 b</p>
 </body>
 </html>
-
 
