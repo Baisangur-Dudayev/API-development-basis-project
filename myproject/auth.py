@@ -13,9 +13,9 @@ from jose import JWTError, jwt
 from datetime import datetime, timedelta
 
 
-SECRET_KEY = secrets.SECRET_KEY
-ALGORITHM = secret.ALGORITHM
-ACCESS_TOKEN_EXPIRE_MINUTES = secrets.ACCESS_TOKEN_EXPIRE_MINUTES
+SECRET_KEY = ${{ secrets.SECRET_KEY }}
+ALGORITHM = ${{ secret.ALGORITHM }}
+ACCESS_TOKEN_EXPIRE_MINUTES = ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
 
 #HASHING
 def get_password_hash(password):
