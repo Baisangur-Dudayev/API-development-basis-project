@@ -4,20 +4,28 @@
 </head>
 <body>
  
-     <div x-data="{
+        <div x-data="{
         responsedata: null,
         async getData() {
             this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/')).json();
         }
     }">
         <button x-on:click="getData">Send get request</button>
-        
-        <!-- Display each property of responsedata -->
         <div x-if="responsedata">
-            <div x-for="(value, key) in Object.entries(responsedata[0])">
-                {{ key }}: <strong x-text="value"></strong>
-            </div>
+            <ul x-if="responsedata.length > 0">
+                <li x-for="(author, index) in responsedata">
+                    <strong>Data returned for author {{ index + 1 }}:</strong>
+                    <ul>
+                        <li x-for="(value, key) in Object.entries(author)">
+                            {{ key }}: <span x-text="value"></span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p x-if="responsedata.length === 0">No data returned</p>
         </div>
+        <p x-if="!responsedata">No data returned</p>
+    </div>
 </body>
 </html>
 
