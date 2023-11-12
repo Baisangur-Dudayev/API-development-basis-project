@@ -80,7 +80,7 @@ def create_author(author: schemas.AuthorCreate, db: Session = Depends(get_db)):
 
 
 @app.get("/authors/", response_model=list[schemas.Author])
-def read_authors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_authors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db),token: str = Depends(oauth2_scheme)):
     authors = crud.get_authors(db, skip=skip, limit=limit)
     return authors
 
