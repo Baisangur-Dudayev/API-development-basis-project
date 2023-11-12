@@ -1,4 +1,6 @@
-from fastapi.security import OAuth2PasswordBearer #niet zeker
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+import auth
+
 import os #voor github secrets
 
 # pip install python-multipart      (deze stond niet in de cursus)
