@@ -1,4 +1,4 @@
-Analyze this coed and tell me why i still cant use the endpoint after logging in. <html>
+<html>
 <head>
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -41,50 +41,38 @@ Analyze this coed and tell me why i still cant use the endpoint after logging in
     window.Alpine.data('login', login);
   </script>
     <!----------------------------------------------------------------------->
-<div x-data="{
-    responsedata: null,
-    accessToken: null,
-    async getData() {
-        // Ensure that the access token is available before making the request
-        if (!this.accessToken) {
-            console.error('Access token is missing');
-            return;
+    <div x-data="{
+        responsedata: null,
+        async getData() {
+            this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/')).json();
         }
+    }">
+        <button x-on:click="getData">Send get request</button>
 
-        this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${this.accessToken}`,
-                'Content-Type': 'application/json',
-            },
-        })).json();
-    }
-}">
-    <button x-on:click="getData">Send get request</button>
-
-    <template x-if="responsedata !== null">
-        <template x-for="(author, index) in responsedata" :key="index">
-            <div>
-                <p>Email: <strong x-text="author.email">Placeholder</strong></p>
-                <p>Name: <strong x-text="author.first_name">Placeholder</strong></p>
-                <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
-                <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
-                <p>ID: <strong x-text="author.id">Placeholder</strong></p>
-                <p>Books:</p>
-                <ul>
-                    <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
-                        <div>
-                            <li>Title: <strong x-text="book.title">Placeholder</strong></li>
-                            <li>Description: <strong x-text="book.description">Placeholder</strong></li>
-                            <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
-                            <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
-                        </div>
-                    </template>
-                </ul>
-            </div>
+        <template x-if="responsedata !== null">
+            <template x-for="(author, index) in responsedata" :key="index">
+                <div>
+                    <p>Email: <strong x-text="author.email">Placeholder</strong></p>
+                    <p>Name: <strong x-text="author.first_name">Placeholder</strong></p>
+                    <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
+                    <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
+                    <p>ID: <strong x-text="author.id">Placeholder</strong></p>
+                    <p>Books:</p>
+                        <ul>
+                            <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
+                                <div>
+                                <li>Title: <strong x-text="book.title">Placeholder</strong></li>    
+                                <li>Description: <strong x-text="book.description">Placeholder</strong></li>
+                                <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
+                                <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
+                               
+                                </div>
+                            </template>
+                        </ul>
+             
+                </div>
+            </template>
         </template>
-    </template>
-</div>
-<p>21:10</p>
+    </div>
 </body>
 </html>
