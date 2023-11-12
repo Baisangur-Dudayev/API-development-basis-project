@@ -32,7 +32,7 @@
             location.reload();
         },
 
-        async getData() {
+        async getAuthors() {
             if (!this.accessToken) {
                 console.error('Not logged in');
                 return;
@@ -82,7 +82,9 @@
         </div>
 
         <div x-show="accessToken">
-            <button x-on:click="getData">Send get request</button>
+            <button x-on:click="getAuthors">get authors</button>
+            <button x-on:click="getBooks">get books</button>
+
             <button x-on:click="logout">Logout</button>
 
             <!--Get authors endpoint-->
