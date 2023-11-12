@@ -20,6 +20,7 @@ To get started with the project, follow these steps:
 ## API Usage
 
 Describe how users can interact with your API. Provide examples of endpoints, request payloads, and expected responses. Include any authentication or authorization requirements.
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/67b4fefb-f603-4f8e-9daf-be58dbf8ddcb)
 
 
 
