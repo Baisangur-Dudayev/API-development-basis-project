@@ -35,16 +35,18 @@ There is already a user with email: "Light@hotmail.com" & password: "password"
 ## Deployment
 
 GET /authors/
+
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/4941a18a-8ecc-4306-9fa3-580977dc3b9e)
 
 
 POST /authors/ 
+
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/c63c89d4-ed33-4432-a396-a0aabb3c8ba0)
 
 
 GET /authors/{author_id}
-![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/5a7b53a2-19ff-4f4b-b661-a1959bb568ff)
 
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/5a7b53a2-19ff-4f4b-b661-a1959bb568ff)
 
 
 POST /authors/{author_id}/books/
