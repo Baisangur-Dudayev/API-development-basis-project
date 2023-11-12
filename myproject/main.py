@@ -71,7 +71,7 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db:
     return {"access_token": access_token, "token_type": "bearer"}
 
 @app.get("/users/me", response_model=schemas.Author)
-def read_users_me(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+def read_users_me(db: Session = Depends(get_db)): #, token: str = Depends(oauth2_scheme)
     current_user = auth.get_current_active_user(db, token)
     return current_user
 
