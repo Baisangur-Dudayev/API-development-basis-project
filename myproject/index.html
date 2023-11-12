@@ -4,44 +4,9 @@
     <link rel="stylesheet" href="style.css">
     <title>API Fronted</title>
 </head>
-<body x-data="{ username: '', password: '', accessToken: null }">
-
-  <input type="text" x-model="username" placeholder="Username">
-  <input type="password" x-model="password" placeholder="Password">
-  <button x-on:click="login">Login</button>
-
-  <p x-text="accessToken ? 'Access Token: ' + accessToken : 'Not logged in'"></p>
-
-  <script>
-    function login() {
-      // Perform the login request to your /token endpoint
-      fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/token', {
-        method: 'POST',
-        headers: {
-          
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          'username': this.username,
-          'password': this.password,
-        }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Update the accessToken property with the received token
-          this.accessToken = data.access_token;
-        })
-        .catch(error => {
-          // Handle login error, if any
-          console.error('Login failed:', error);
-        });
-    }
-
-    // Expose the login function to Alpine.js
-    window.Alpine.data('login', login);
-  </script>
+<body>
     <!----------------------------------------------------------------------->
-    <div x-data="{
+       <div x-data="{
         responsedata: null,
         async getData() {
   this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/', {
