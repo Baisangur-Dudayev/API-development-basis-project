@@ -85,6 +85,7 @@
             <button x-on:click="getData">Send get request</button>
             <button x-on:click="logout">Logout</button>
 
+            <!--Get authors endpoint-->
             <template x-if="responsedata !== null">
                 <template x-for="(author, index) in responsedata" :key="index">
                     <div>
@@ -107,6 +108,8 @@
                     </div>
                 </template>
             </template>
+            
+            <!--Get books endpoint-->
             <template x-if="responsedata !== null">
                 <template x-for="(book, index) in responsedata" :key="index">
                     <div>
