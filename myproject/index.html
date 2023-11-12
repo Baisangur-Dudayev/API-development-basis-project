@@ -5,43 +5,86 @@
     <title>API Fronted</title>
 </head>
 <body>
-    <!----------------------------------------------------------------------->
-       <div x-data="{
-        responsedata: null,
-        async getData() {
-  this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/', {
-    headers: {
-      'Authorization': 'Bearer ' + this.accessToken
-    }
-  })).json();
-}
-    }">
-        <button x-on:click="getData">Send get request</button>
 
-        <template x-if="responsedata !== null">
-            <template x-for="(author, index) in responsedata" :key="index">
-                <div>
-                    <p>Email: <strong x-text="author.email">Placeholder</strong></p>
-                    <p>Name: <strong x-text="author.first_name">Placeholder</strong></p>
-                    <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
-                    <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
-                    <p>ID: <strong x-text="author.id">Placeholder</strong></p>
-                    <p>Books:</p>
+    <div x-data="{ 
+        responsedata: null,
+        accessToken: localStorage.getItem('access_token'),
+
+        async login() {
+            const form_data = new FormData(document.getElementById('loginForm'));
+            const response = await fetch('http://localhost:8000/token', {
+                method: 'POST',
+                body: form_data,
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                this.accessToken = data.access_token;
+                localStorage.setItem('access_token', data.access_token);
+                this.getData();
+            } else {
+                console.error('Login failed');
+            }
+        },
+
+        async getData() {
+            if (!this.accessToken) {
+                console.error('Not logged in');
+                return;
+            }
+
+            const response = await fetch('http://localhost:8000/authors/', {
+                headers: {
+                    'Authorization': 'Bearer ' + this.accessToken,
+                },
+            });
+
+            if (response.ok) {
+                this.responsedata = await response.json();
+            } else {
+                console.error('Failed to fetch data');
+            }
+        },
+    }">
+        <div x-show="!accessToken">
+            <form id="loginForm" x-on:submit.prevent="login">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div x-show="accessToken">
+            <button x-on:click="getData">Send get request</button>
+
+            <template x-if="responsedata !== null">
+                <template x-for="(author, index) in responsedata" :key="index">
+                    <div>
+                        <p>Email: <strong x-text="author.email">Placeholder</strong></p>
+                        <p>Name: <strong x-text="author.first_name">Placeholder</strong></p>
+                        <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
+                        <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
+                        <p>ID: <strong x-text="author.id">Placeholder</strong></p>
+                        <p>Books:</p>
                         <ul>
                             <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
                                 <div>
-                                <li>Title: <strong x-text="book.title">Placeholder</strong></li>    
-                                <li>Description: <strong x-text="book.description">Placeholder</strong></li>
-                                <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
-                                <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
-                               
+                                    <li>Title: <strong x-text="book.title">Placeholder</strong></li>
+                                    <li>Description: <strong x-text="book.description">Placeholder</strong></li>
+                                    <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
+                                    <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
                                 </div>
                             </template>
                         </ul>
-             
-                </div>
+                    </div>
+                </template>
             </template>
-        </template>
+        </div>
     </div>
 </body>
+
 </html>
