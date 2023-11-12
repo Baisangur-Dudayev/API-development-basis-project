@@ -41,7 +41,7 @@
     window.Alpine.data('login', login);
   </script>
     <!----------------------------------------------------------------------->
-   <div x-data="{
+<div x-data="{
     responsedata: null,
     accessToken: null,
     async getData() {
@@ -60,32 +60,31 @@
         })).json();
     }
 }">
-        <button x-on:click="getData">Send get request</button>
+    <button x-on:click="getData">Send get request</button>
 
-        <template x-if="responsedata !== null">
-            <template x-for="(author, index) in responsedata" :key="index">
-                <div>
-                    <p>Email: <strong x-text="author.email">Placeholder</strong></p>
-                    <p>Name: <strong x-text="author.first_name">Placeholder</strong></p>
-                    <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
-                    <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
-                    <p>ID: <strong x-text="author.id">Placeholder</strong></p>
-                    <p>Books:</p>
-                        <ul>
-                            <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
-                                <div>
-                                <li>Title: <strong x-text="book.title">Placeholder</strong></li>    
-                                <li>Description: <strong x-text="book.description">Placeholder</strong></li>
-                                <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
-                                <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
-                               
-                                </div>
-                            </template>
-                        </ul>
-             
-                </div>
-            </template>
+    <template x-if="responsedata !== null">
+        <template x-for="(author, index) in responsedata" :key="index">
+            <div>
+                <p>Email: <strong x-text="author.email">Placeholder</strong></p>
+                <p>Name: <strong x-text="author.first_name">Placeholder</strong></p>
+                <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
+                <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
+                <p>ID: <strong x-text="author.id">Placeholder</strong></p>
+                <p>Books:</p>
+                <ul>
+                    <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
+                        <div>
+                            <li>Title: <strong x-text="book.title">Placeholder</strong></li>
+                            <li>Description: <strong x-text="book.description">Placeholder</strong></li>
+                            <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
+                            <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
+                        </div>
+                    </template>
+                </ul>
+            </div>
         </template>
-    </div>
+    </template>
+</div>
+<p>19:56</p>
 </body>
 </html>
