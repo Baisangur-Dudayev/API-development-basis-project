@@ -3,8 +3,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
 <body>
-    <!–– code test ––>
-    <div x-data="{
+     <div x-data="{
         responsedata: null,
         async getData() {
             this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/')).json();
@@ -12,14 +11,18 @@
     }">
         <button x-on:click="getData">Send get request</button>
 
-        <div x-if="responsedata !== null">
-            <template x-for="author in responsedata">
-                <p>Data returned:</p>
-                <strong x-text="author.email"></strong>
-                <strong x-text="author.number"></strong>
+        <!-- Use x-if to check if responsedata is not null -->
+        <template x-if="responsedata !== null">
+            <!-- Use x-for to iterate over the array -->
+            <template x-for="(author, index) in responsedata" :key="index">
+                <div>
+                    <!-- Use dynamic property names to access different properties of the author object -->
+                    <p>Data returned: <strong x-text="author.email">Placeholder</strong></p>
+                    <p>Data returned: <strong x-text="author.number">Placeholder</strong></p>
+                </div>
             </template>
-        </div>
-        <p x-if="responsedata === null">Placeholder</p>
+        </template>
+
     </div>
 </body>
 </html>
