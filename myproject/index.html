@@ -81,49 +81,49 @@
             </form>
         </div>
 
-        <div x-show="accessToken">
-            <button x-on:click="getAuthors">get authors</button>
-            <button x-on:click="getBooks">get books</button>
+     <div x-show="accessToken">
+    <button x-on:click="getAuthors">Get Authors</button>
+    <button x-on:click="getBooks">Get Books</button>
+    <button x-on:click="logout">Logout</button>
 
-            <button x-on:click="logout">Logout</button>
+    <!-- Get authors endpoint -->
+    <template x-if="responsedata !== null && responsedata.authors">
+        <template x-for="(author, index) in responsedata.authors" :key="index">
+            <div>
+                <p>Email: <strong x-text="author.email">Placeholder</strong></p>
+                <p>Name: <strong x-text="author.first_name">Placeholder</strong></p>
+                <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
+                <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
+                <p>ID: <strong x-text="author.id">Placeholder</strong></p>
+                <p>Books:</p>
+                <ul>
+                    <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
+                        <div>
+                            <li>Title: <strong x-text="book.title">Placeholder</strong></li>
+                            <li>Description: <strong x-text="book.description">Placeholder</strong></li>
+                            <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
+                            <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
+                        </div>
+                    </template>
+                </ul>
+            </div>
+        </template>
+    </template>
+    
+    <!-- Get books endpoint -->
+    <template x-if="responsedata !== null && responsedata.books">
+        <template x-for="(book, index) in responsedata.books" :key="index">
+            <div>
+                <p>Title: <strong x-text="book.title">Placeholder</strong></p>
+                <p>Description: <strong x-text="book.description">Placeholder</strong></p>
+                <p>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></p>
+                <p>Genre: <strong x-text="book.genre">Placeholder</strong></p>
+                <p>ID: <strong x-text="book.id">Placeholder</strong></p>
+            </div>
+        </template>
+    </template>
+</div>
 
-            <!--Get authors endpoint-->
-            <template x-if="responsedata !== null">
-                <template x-for="(author, index) in responsedata" :key="index">
-                    <div>
-                        <p>Email: <strong x-text="author.email">Placeholder</strong></p>
-                        <p>Name: <strong x-text="author.first_name">Placeholder</strong></p>
-                        <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
-                        <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
-                        <p>ID: <strong x-text="author.id">Placeholder</strong></p>
-                        <p>Books:</p>
-                        <ul>
-                            <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
-                                <div>
-                                    <li>Title: <strong x-text="book.title">Placeholder</strong></li>
-                                    <li>Description: <strong x-text="book.description">Placeholder</strong></li>
-                                    <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
-                                    <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
-                                </div>
-                            </template>
-                        </ul>
-                    </div>
-                </template>
-            </template>
-            
-            <!--Get books endpoint-->
-            <template x-if="responsedata !== null">
-                <template x-for="(book, index) in responsedata" :key="index">
-                    <div>
-                        <p>title: <strong x-text="author.title">Placeholder</strong></p>
-                        <p>description: <strong x-text="book.description">Placeholder</strong></p>
-                        <p>publication date: <strong x-text="book.publication_date">Placeholder</strong></p>
-                        <p>genre: <strong x-text="book.genre">Placeholder</strong></p>
-                        <p>ID: <strong x-text="book.id">Placeholder</strong></p>
-                    </div>
-                </template>
-            </template>
-        </div>
     </div>
 </body>
 
