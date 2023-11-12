@@ -14,7 +14,7 @@ I utilized Okteto for development. The API documentation is available at [Okteto
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/a5ce7fc0-b90e-45a4-936c-2cb121eae178)
 
 
-## API Usage
+##Authentication
 
 Describe how users can interact with your API. Provide examples of endpoints, request payloads, and expected responses. Include any authentication or authorization requirements.
 
@@ -22,7 +22,8 @@ Describe how users can interact with your API. Provide examples of endpoints, re
 
 u must authenticate firstto use most endpoints
 There is already a user with email: "Light@hotmail.com" & password: "password"
-![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/347d6a9f-dc03-4760-992b-26322e5814ac)
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/8a5b6a27-75ad-4fe3-a387-d0d0096b3be3)
+
 
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/954fb833-ebb8-4920-b95e-3abb69159ed5)
 
@@ -54,7 +55,18 @@ POST /authors/{author_id}/books/
 POST /authors/{author_id}/pen_names/
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/8fc25a7d-6445-4f1d-9f49-b49b2bf6ae40)
 
+GET /books/
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/7f7d602c-7338-483a-9d71-33246effd8c2)
+
+
 DELETE
+/pen_names/{pen_name_id}
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/6f776df7-f158-47bf-8a3f-ab4484bf1cf8)
+
+
+DELETE /books/{book_id}
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/3f529b91-b976-4d26-91fb-3123e2dee482)
+
 
 ##FRONTEND
 This is my frontend I have a get point to retrieve all authors. You also need to authenticate yourself and log in before you can use the endpoint.
