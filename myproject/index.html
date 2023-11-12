@@ -19,13 +19,15 @@
                     <p>Surname: <strong x-text="author.last_name">Placeholder</strong></p>
                     <p>Biography: <strong x-text="author.biography">Placeholder</strong></p>
                     <p>ID: <strong x-text="author.id">Placeholder</strong></p>
+                    <p>Books:</p>
                         <ul>
                             <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
+                                <div>
                                 <li>Description: <strong x-text="book.description">Placeholder</strong></li>
                                 <li>Publication Date: <strong x-text="book.publication_date">Placeholder</strong></li>
                                 <li>Genre: <strong x-text="book.genre">Placeholder</strong></li>
                                 <li>Title test: <strong x-text="book.title">Placeholder</strong></li>
-
+                                </div>
                             </template>
                         </ul>
                 
