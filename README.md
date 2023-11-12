@@ -10,12 +10,9 @@ The frontend of this project is hosted on GitHub Pages. You can access it [here]
 
 I utilized Okteto for development. The API documentation is available at [Okteto - API Documentation](https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/docs#/).
 
-## Getting Started
+#DEPLOYMENT
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/a5ce7fc0-b90e-45a4-936c-2cb121eae178)
 
-To get started with the project, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/baisangur-dudayev/API-development-basis-project.git`
-2. Navigate to the project directory: `cd API-development-basis-project`
 
 ## API Usage
 
@@ -65,3 +62,4 @@ Unfortunatly I didn't have enough time to add the other endpoints.
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/d7ee31f4-ac94-4bb6-bd59-214daa999360)
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/fd189840-3030-4d3f-9667-568125fd6d47)
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/7a07c0e4-7770-47f1-aca7-3ba8c3a4e545)
+
