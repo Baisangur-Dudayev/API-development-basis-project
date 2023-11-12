@@ -14,7 +14,7 @@ from datetime import datetime, timedelta
 
 
 SECRET_KEY = ${{ secrets.SECRET_KEY }}
-ALGORITHM = ${{ secret.ALGORITHM }}
+ALGORITHM = ${{ secrets.ALGORITHM }}
 ACCESS_TOKEN_EXPIRE_MINUTES = ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
 
 #HASHING
