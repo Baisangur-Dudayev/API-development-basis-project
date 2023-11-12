@@ -58,7 +58,7 @@ def create_access_token(data: dict):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def get_current_user(db: Session, token: str = Depends(oauth2_scheme)):
+def get_current_author(db: Session, token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -71,13 +71,13 @@ def get_current_user(db: Session, token: str = Depends(oauth2_scheme)):
             raise credentials_exception
     except JWTError:
         raise credentials_exception
-    user = crud.get_user_by_email(db, username)
+    user = crud.get_author_by_email(db, username)
     if user is None:
         raise credentials_exception
     return user
     
 def get_current_active_user(db: Session, token: str = Depends(oauth2_scheme)):
-    current_user = get_current_user(db, token)
+    current_user = get_current_author(db, token)
     if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
