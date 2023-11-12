@@ -25,12 +25,20 @@ my endpoints:
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/67b4fefb-f603-4f8e-9daf-be58dbf8ddcb)
 
 u must authenticate firstto use most endpoints
+There is already a user with email: "Light@hotmail.com" & password: "password"
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/347d6a9f-dc03-4760-992b-26322e5814ac)
 
-![Uploading image.png…]()
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/954fb833-ebb8-4920-b95e-3abb69159ed5)
+
 
 
 ## Deployment
 
-Provide instructions on how to deploy the project, including any necessary configurations or environment variables.
+GET /authors/
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/f8030a26-4d61-40fc-ba71-4f697d8faaf7)
 
+POST /authors/
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/25af46d1-b78d-40ad-9b2f-1991d1ecdfd1)
+
+GET /authors/{author_id}
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/f38d9ec5-74fa-4c92-a388-e4d6cd03a357)
