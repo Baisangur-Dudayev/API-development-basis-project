@@ -1,5 +1,4 @@
-from pydantic import BaseModel
-pydantic import BaseModel, Field
+from pydantic import BaseModel, Field
 #^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$    from 
 #Book classen
 class BookBase(BaseModel):
