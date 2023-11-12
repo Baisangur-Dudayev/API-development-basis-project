@@ -1,7 +1,6 @@
 
 import os #voor github secrets
 
-#code test
 # pip install python-multipart      (deze stond niet in de cursus)
 # pip install "passlib[bcrypt,argon2]"
 from passlib.context import CryptContext
@@ -17,7 +16,8 @@ from datetime import datetime, timedelta
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 ALGORITHM = os.environ.get("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES"))
+#ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES"))
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 #HASHING
 def get_password_hash(password):
