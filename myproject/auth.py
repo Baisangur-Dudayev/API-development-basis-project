@@ -24,6 +24,9 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 print("ALGORITHM:", ALGORITHM)
 
+#OAuth
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
 #HASHING
 def get_password_hash(password):
     return pwd_context.hash(password)
