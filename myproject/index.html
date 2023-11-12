@@ -11,36 +11,26 @@
     }">
         <button x-on:click="getData">Send get request</button>
 
-        <!-- Use x-if to check if responsedata is not null -->
-        <template x-if="responsedata !== null">
-            <!-- Use x-for to iterate over the array -->
-            <template x-for="(author, index) in responsedata" :key="index">
-                <div>
-                    <!-- Use dynamic property names to access different properties of the author object -->
-                    <p>Data returned: <strong x-text="author.email">Placeholder</strong></p>
-                    <p>Data returned: <strong x-text="author.first_name">Placeholder</strong></p>
-                    <p>Data returned: <strong x-text="author.last_name">Placeholder</strong></p>
-                   <!-- <p>Data returned: <strong x-text="author.place_of_birth">Placeholder</strong></p>-->
-                    <p>Data returned: <strong x-text="author.biography">Placeholder</strong></p>                          
-                    <p>Data returned: <strong x-text="author.id">Placeholder</strong></p>
+      <template x-if="responsedata !== null">
+        <template x-for="(author, index) in responsedata" :key="index">
+            <div>
+                <p>Data returned: <strong x-text="author.email">Placeholder</strong></p>
+                <p>Data returned: <strong x-text="author.first_name">Placeholder</strong></p>
+                <p>Data returned: <strong x-text="author.last_name">Placeholder</strong></p>
+                <p>Data returned: <strong x-text="author.biography">Placeholder</strong></p>
+                <p>Data returned: <strong x-text="author.id">Placeholder</strong></p>
 
-                    <!---->
-                     <div x-if="Array.isArray(author.books)">
-            <p>Books:</p>
-            <ul>
-                <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
-                    <li>Data returned: <strong x-text="book.title">Placeholder</strong></li>
-                    <!-- Access other book properties as needed -->
-                </template>
-            </ul>
-        </div>
-                    <!---->
-                    
-                    <!--<p>Data returned: <strong x-text="author.pennames">Placeholder</strong></p>-->
-
+                <div x-if="Array.isArray(author.books)">
+                    <p>Books:</p>
+                    <ul>
+                        <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
+                            <li>Data returned: <strong x-text="book.title">Placeholder</strong></li>
+                        </template>
+                    </ul>
                 </div>
-            </template>
+            </div>
         </template>
+    </template>
 
     </div>
 </body>
