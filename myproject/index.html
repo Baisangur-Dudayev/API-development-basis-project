@@ -5,6 +5,8 @@
     <title>API Fronted</title>
 </head>
 <body>
+        <button x-on:click="showData = !showData">Toggle Data</button>
+        <div x-show="showData">
     <div x-data="{
         responsedata: null,
         async getData() {
@@ -38,5 +40,6 @@
             </template>
         </template>
     </div>
+</div>
 </body>
 </html>
