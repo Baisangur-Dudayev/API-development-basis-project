@@ -6,46 +6,39 @@
 </head>
 <body x-data="{ username: '', password: '', accessToken: null }">
 
-    <!----------------------------------------------------------------------->
- <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" x-model="username">
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" x-model="password">
-    </div>
-    <div>
-        <button x-on:click="login">Login</button>
-    </div>
-    <div x-show="accessToken">
-        <p>Access Token: <strong x-text="accessToken"></strong></p>
-    </div>
+  <input type="text" x-model="username" placeholder="Username">
+  <input type="password" x-model="password" placeholder="Password">
+  <button x-on:click="login">Login</button>
 
-    <script>
-        async function login() {
-            const response = await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/token', {
-                method: 'POST',
-                body: new URLSearchParams({
-                    'username': this.username,
-                    'password': this.password,
-                    'grant_type': 'password',
-                }),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-            });
+  <p x-text="accessToken ? 'Access Token: ' + accessToken : 'Not logged in'"></p>
 
-            const responseData = await response.json();
+  <script>
+    function login() {
+      // Perform the login request to your /token endpoint
+      fetch('https://your-api-domain.com/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          'username': this.username,
+          'password': this.password,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Update the accessToken property with the received token
+          this.accessToken = data.access_token;
+        })
+        .catch(error => {
+          // Handle login error, if any
+          console.error('Login failed:', error);
+        });
+    }
 
-            if (response.ok) {
-                this.accessToken = responseData.access_token;
-                console.log('Login successful:', responseData);
-            } else {
-                console.error('Login failed:', responseData);
-            }
-        }
-    </script>
+    // Expose the login function to Alpine.js
+    window.Alpine.data('login', login);
+  </script>
     <!----------------------------------------------------------------------->
     <div x-data="{
         responsedata: null,
