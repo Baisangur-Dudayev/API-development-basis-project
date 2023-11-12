@@ -42,3 +42,9 @@ POST /authors/
 
 GET /authors/{author_id}
 ![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/f38d9ec5-74fa-4c92-a388-e4d6cd03a357)
+
+hier
+POST /authors/{author_id}/books/
+![image](https://github.com/Baisangur-Dudayev/API-development-basis-project/assets/113896223/e6885394-f264-465b-bc0b-b44ee1ca069d)
+
+
