@@ -1,3 +1,6 @@
+
+import os #voor github secrets
+
 #code test
 # pip install python-multipart      (deze stond niet in de cursus)
 # pip install "passlib[bcrypt,argon2]"
@@ -12,10 +15,9 @@ from fastapi import Depends, HTTPException, status
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 
-
-SECRET_KEY = ${{ secrets.SECRET_KEY }}
-ALGORITHM = ${{ secrets.ALGORITHM }}
-ACCESS_TOKEN_EXPIRE_MINUTES = int("${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}")
+SECRET_KEY = os.environ.get("SECRET_KEY")
+ALGORITHM = os.environ.get("ALGORITHM")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
 #HASHING
 def get_password_hash(password):
