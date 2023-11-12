@@ -3,18 +3,22 @@
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
 <body>
-    <!–– code test ––>
-    <div x-data="{
+ 
+     <div x-data="{
         responsedata: null,
         async getData() {
             this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/')).json();
         }
     }">
         <button x-on:click="getData">Send get request</button>
-        Data returned: <strong x-text="responsedata">Placeholder</strong>
-        Data returned: <strong x-text="responsedata[0]">Placeholder</strong>
-        Data returned: <strong x-text="responsedata[0].email">Placeholder</strong>
-
+        
+        <!-- Display each property of responsedata -->
+        <div x-if="responsedata">
+            <div x-for="(value, key) in Object.entries(responsedata[0])">
+                {{ key }}: <strong x-text="value"></strong>
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>
