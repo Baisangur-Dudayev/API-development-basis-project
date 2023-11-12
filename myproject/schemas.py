@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
-#^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$    from 
-#Book classen
+
+#Book classes
 class BookBase(BaseModel):
     title: str
     description: str | None = None   
@@ -21,7 +21,7 @@ class Book(BookBase):
     class Config:
         orm_mode = True
 
-#PenName classen
+#PenName classes
 class PenNameBase(BaseModel):
     pen_name: str
 
@@ -35,7 +35,7 @@ class PenName(PenNameBase):
     class Config:
         orm_mode = True
 
-#Author classen ^[a-zA-Z]+$
+#Author classes
 class AuthorBase(BaseModel):
     email: str = Field(pattern='^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$') 
     first_name: str | None = Field(pattern='^[a-zA-Z]+$')
@@ -52,7 +52,6 @@ class AuthorCreate(AuthorBase):
 class Author(AuthorBase):
     id: int
     is_active: bool
-    #om classen Book & PenName hier te gebruiken moeten ze boven boven deze classen gedefinieerd staan
     books: list[Book] = []
     pen_names: list[PenName] = []
 
