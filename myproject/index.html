@@ -3,7 +3,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
 <body>
-     <div x-data="{
+    <div x-data="{
         responsedata: null,
         async getData() {
             this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/')).json();
@@ -11,27 +11,26 @@
     }">
         <button x-on:click="getData">Send get request</button>
 
-      <template x-if="responsedata !== null">
-        <template x-for="(author, index) in responsedata" :key="index">
-            <div>
-                <p>Data returned: <strong x-text="author.email">Placeholder</strong></p>
-                <p>Data returned: <strong x-text="author.first_name">Placeholder</strong></p>
-                <p>Data returned: <strong x-text="author.last_name">Placeholder</strong></p>
-                <p>Data returned: <strong x-text="author.biography">Placeholder</strong></p>
-                <p>Data returned: <strong x-text="author.id">Placeholder</strong></p>
+        <template x-if="responsedata !== null">
+            <template x-for="(author, index) in responsedata" :key="index">
+                <div>
+                    <p>Data returned: <strong x-text="author.email">Placeholder</strong></p>
+                    <p>Data returned: <strong x-text="author.first_name">Placeholder</strong></p>
+                    <p>Data returned: <strong x-text="author.last_name">Placeholder</strong></p>
+                    <p>Data returned: <strong x-text="author.biography">Placeholder</strong></p>
+                    <p>Data returned: <strong x-text="author.id">Placeholder</strong></p>
 
-                <div x-if="Array.isArray(author.books)">
-                    <p>Books:</p>
-                    <ul>
-                        <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
-                            <li>Data returned: <strong x-text="book.title">Placeholder</strong></li>
-                        </template>
-                    </ul>
+                    <div x-if="Array.isArray(author.books)">
+                        <p>Books:</p>
+                        <ul>
+                            <template x-for="(book, bookIndex) in author.books" :key="bookIndex">
+                                <li>Data returned: <strong x-text="book.title">Placeholder</strong></li>
+                            </template>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </template>
         </template>
-    </template>
-
     </div>
 </body>
 </html>
