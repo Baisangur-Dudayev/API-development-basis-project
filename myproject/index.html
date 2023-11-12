@@ -44,8 +44,12 @@
     <div x-data="{
         responsedata: null,
         async getData() {
-            this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/')).json();
-        }
+  this.responsedata = await (await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/', {
+    headers: {
+      'Authorization': 'Bearer ' + this.accessToken
+    }
+  })).json();
+}
     }">
         <button x-on:click="getData">Send get request</button>
 
