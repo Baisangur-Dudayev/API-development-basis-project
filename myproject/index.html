@@ -12,7 +12,7 @@
 
         async login() {
             const form_data = new FormData(document.getElementById('loginForm'));
-            const response = await fetch('http://localhost:8000/token', {
+            const response = await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/token', {
                 method: 'POST',
                 body: form_data,
             });
