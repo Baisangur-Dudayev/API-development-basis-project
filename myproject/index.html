@@ -32,31 +32,13 @@
             location.reload();
         },
 
-        async getAuthors() {
+        async getData() {
             if (!this.accessToken) {
                 console.error('Not logged in');
                 return;
             }
 
             const response = await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/authors/', {
-                headers: {
-                    'Authorization': 'Bearer ' + this.accessToken,
-                },
-            });
-
-            if (response.ok) {
-                this.responsedata = await response.json();
-            } else {
-                console.error('Failed to fetch data');
-            }
-        },
-       async getBooks() {
-            if (!this.accessToken) {
-                console.error('Not logged in');
-                return;
-            }
-
-            const response = await fetch('https://useritem-api-service-baisangur-dudayev.cloud.okteto.net/books/', {
                 headers: {
                     'Authorization': 'Bearer ' + this.accessToken,
                 },
@@ -82,12 +64,9 @@
         </div>
 
         <div x-show="accessToken">
-            <button x-on:click="getAuthors">get authors</button>
-            <button x-on:click="getBooks">get books</button>
-
+            <button x-on:click="getData">Send get request</button>
             <button x-on:click="logout">Logout</button>
 
-            <!--Get authors endpoint-->
             <template x-if="responsedata !== null">
                 <template x-for="(author, index) in responsedata" :key="index">
                     <div>
@@ -107,19 +86,6 @@
                                 </div>
                             </template>
                         </ul>
-                    </div>
-                </template>
-            </template>
-
-            <!--Get books endpoint-->
-            <template x-if="responsedata !== null">
-                <template x-for="(book, index) in responsedata" :key="index">
-                    <div>
-                        <p>title: <strong x-text="author.title">Placeholder</strong></p>
-                        <p>description: <strong x-text="book.description">Placeholder</strong></p>
-                        <p>publication date: <strong x-text="book.publication_date">Placeholder</strong></p>
-                        <p>genre: <strong x-text="book.genre">Placeholder</strong></p>
-                        <p>ID: <strong x-text="book.id">Placeholder</strong></p>
                     </div>
                 </template>
             </template>
