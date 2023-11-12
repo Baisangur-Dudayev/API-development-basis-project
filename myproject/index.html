@@ -6,7 +6,7 @@
 </head>
 <body>
 
-   <div x-data="{ 
+   <div x-data="{
         responsedata: null,
         accessToken: localStorage.getItem('access_token'),
 
@@ -21,7 +21,6 @@
                 const data = await response.json();
                 this.accessToken = data.access_token;
                 localStorage.setItem('access_token', data.access_token);
-                this.getData();
             } else {
                 console.error('Login failed');
             }
