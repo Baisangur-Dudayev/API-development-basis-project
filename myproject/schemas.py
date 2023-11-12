@@ -3,13 +3,12 @@ from pydantic import BaseModel, Field
 #Book classen
 class BookBase(BaseModel):
     title: str
-    description: str | None = None
-    publication_date: str 
-   # publication_date: str = Field(
-    #    ...,  # Ensure the field is required
-     #   description="Publication date in the format YYYY-MM-DD",
-      #  regex=r"^\d{4}-\d{2}-\d{2}$",
-   # )
+    description: str | None = None   
+    publication_date: str = Field(
+        ...,  # Ensure the field is required
+        description="Publication date in the format YYYY-MM-DD",
+        regex=r"^\d{4}-\d{2}-\d{2}$",
+    )
     genre: str
 
 class BookCreate(BookBase):
