@@ -5,7 +5,11 @@ pydantic import BaseModel, Field
 class BookBase(BaseModel):
     title: str
     description: str | None = None
-    publication_date: str
+    publication_date: str = Field(
+        ...,  # Ensure the field is required
+        description="Publication date in the format YYYY-MM-DD",
+        regex=r"^\d{4}-\d{2}-\d{2}$",
+    )
     genre: str
 
 class BookCreate(BookBase):
@@ -32,16 +36,19 @@ class PenName(PenNameBase):
     class Config:
         orm_mode = True
 
-#Author classen
+#Author classen ^[a-zA-Z]+$
 class AuthorBase(BaseModel):
     email: str = Field(pattern='^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$') 
-    first_name: str | None = None
-    last_name: str  | None = None
-    place_of_birth: str | None = None
+    first_name: str | None = Field(pattern='^[a-zA-Z]+$')
+    last_name: str  | None = Field(pattern='^[a-zA-Z]+$')
+    place_of_birth: str | None = Field(pattern='^[a-zA-Z]+$')
     biography: str | None = None
 
 class AuthorCreate(AuthorBase):
-    password: str
+     password: str = Field(
+        ...,  # This indicates that the password is required
+        min_length=8,  # Enforces a minimum length of 8 characters
+    )
 
 class Author(AuthorBase):
     id: int
