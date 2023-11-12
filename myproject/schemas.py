@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-
+pydantic import BaseModel, Field
+#^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$    from 
 #Book classen
 class BookBase(BaseModel):
     title: str
@@ -33,7 +34,7 @@ class PenName(PenNameBase):
 
 #Author classen
 class AuthorBase(BaseModel):
-    email: str
+    email: str = Field(pattern='^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$') 
     first_name: str | None = None
     last_name: str  | None = None
     place_of_birth: str | None = None
